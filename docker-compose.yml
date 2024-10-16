@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  test_api_p5000:
+    # network_mode: host-only
+    # restart: on-failure
+    restart: always
+    image: test_api_p5000:1.0
+    ports:
+      - 5000:5000
+    # volumes:
+    #   - /home/user01/scan_all_port_public/:/scan_all_port_public/
+

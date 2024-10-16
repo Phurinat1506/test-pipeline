@@ -1,0 +1,15 @@
+Flask==2.0.2
+Flask-Ext==0.1
+Flask-MySQL==1.5.2
+PyJWT==1.5.3
+pymongo==4.0.2
+PyYAML==3.12
+regx==1.0.0
+requests==2.18.4
+urllib3==1.22
+uvicorn==0.16.0
+Werkzeug==2.0.2
+python-dateutil==2.8.2
+pyjwt
+bcrypt
+pycryptodome

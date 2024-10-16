@@ -1,0 +1,4 @@
+script/*.txt
+__pycache__
+*.yaml
+test*.*
