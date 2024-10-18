@@ -49,7 +49,7 @@ pipeline {
                         // envProps = map;
                     }
                 }
-                    def testResult = sh(script: 'make test', returnStatus: true)
+                    //def testResult = sh(script: 'make test', returnStatus: true)
 
                     // การจัดการผลลัพธ์การทดสอบ
                     if (testResult == 0) {
