@@ -23,7 +23,7 @@ pipeline {
                     echo "Build result status: ${buildResult}"
                     // ตรวจสอบผลลัพธ์การสร้าง
                     if (buildResult == 0) {
-                        error 'Build successfully!'
+                        echo 'Build successfully!'
                     }else {
                         error 'Build failed!'
                     }
@@ -39,7 +39,9 @@ pipeline {
                     echo 'Read .env'
                     echo '******************************'
                     script {
-                        def envFile = readFile(".env");
+                        // อ่านไฟล์ .env
+                        def envFile = readFile '.env'
+
                         echo "${envFile}"
                         // def map = [:], lines = envFile.split("\r?\n"); 
                         // for (def line : lines) {
