@@ -44,12 +44,13 @@ pipeline {
                         // echo "${envFile}"
                         def map = [:], lines = envFile.split("\r?\n"); 
                         for (def line : lines) {
-                            def arr = line.split("=");
-                            map.put(arr[0], arr[1]);
-                            echo "${map}"
+                            sh "export ${line}"
+                            // def arr = line.split("=");
+                            // map.put(arr[0], arr[1]);
+                            // echo "${map}"
                         }
-                        envProps = map;
-                        echo "event prop -> ${envProps}"
+                        //envProps = map;
+                       
                     }
                 
                     //def testResult = sh(script: 'make test', returnStatus: true)
