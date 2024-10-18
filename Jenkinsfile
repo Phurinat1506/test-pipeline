@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Check version python'
                 sh 'python3 -V'
+                echo 'test pipeline'
                 
             }
         }
