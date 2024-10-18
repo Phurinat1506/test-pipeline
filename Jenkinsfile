@@ -2,14 +2,52 @@ pipeline {
     agent any
     
     stages {
-        stage('build') {
+        stage('Init'){
             steps {
-                echo 'Check version python'
-                sh 'python3 -V'
-                echo 'test build docker'
-                sh 'sudo docker build -t test_api_p5000:1.0 .'
+                echo 'Init'
+                echo '******************************'
+            }
+        }
+ 
+        stage('install') {
+            steps {
+                echo 'install'
+                echo '******************************'
                 
             }
+        }
+        stage('build') {
+            steps {
+
+                echo 'test build docker'
+                sh 'sudo docker build -t test_api_p5000:1.0 .'
+                script {
+                    echo 'Building the application...'
+                    // การสร้างแอปพลิเคชัน
+                    def buildResult = sh(script: 'sudo docker build -t test_api_p5000:1.0 .', returnStatus: true)
+
+                    // ตรวจสอบผลลัพธ์การสร้าง
+                    if (buildResult != 0) {
+                        error 'Build failed!'
+                    }else {
+                        error 'Build successfully!'
+                    }
+                }
+                
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Cleaning up...'
+            // การทำความสะอาดหลังจาก Pipeline เสร็จสิ้น
+            cleanWs()
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Check logs for details.'
         }
     }
 }
