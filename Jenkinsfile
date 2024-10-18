@@ -6,7 +6,8 @@ pipeline {
             steps {
                 echo 'Check version python'
                 sh 'python3 -V'
-                echo 'test pipeline'
+                echo 'test build docker'
+                sh 'docker build -t test_api_p5000:1.0 .'
                 
             }
         }
