@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running tests...'
-                    steps{
+                    
                     echo 'Read .env'
                     echo '******************************'
                     script {
@@ -49,7 +49,7 @@ pipeline {
                         // }
                         // envProps = map;
                     }
-                }
+                
                     //def testResult = sh(script: 'make test', returnStatus: true)
 
                     // การจัดการผลลัพธ์การทดสอบ
