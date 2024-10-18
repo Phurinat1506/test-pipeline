@@ -49,6 +49,7 @@ pipeline {
                             echo "${map}"
                         }
                         envProps = map;
+                        echo "event prop -> ${envProps}"
                     }
                 
                     //def testResult = sh(script: 'make test', returnStatus: true)
