@@ -1,6 +1,8 @@
 pipeline {
     agent any
     
+    
+
     stages {
         stage('Init'){
             steps {
@@ -8,14 +10,7 @@ pipeline {
                 echo '******************************'
             }
         }
- 
-        stage('install') {
-            steps {
-                echo 'install'
-                echo '******************************'
-                
-            }
-        }
+
         stage('build') {
             steps {
 
@@ -27,13 +22,42 @@ pipeline {
                     def buildResult = sh(script: 'sudo docker build -t test_api_p5000:1.0 .', returnStatus: true)
                     echo "Build result status: ${buildResult}"
                     // ตรวจสอบผลลัพธ์การสร้าง
-                    if (buildResult != 0) {
-                        error 'Build failed!'
+                    if (buildResult == 0) {
+                        error 'Build successfully!'
                     }else {
-                        echo 'Build successfully!'
+                        error 'Build failed!'
                     }
                 }
                 
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    echo 'Running tests...'
+                    steps{
+                    echo 'Read .env'
+                    echo '******************************'
+                    script {
+                        def envFile = readFile(".env");
+                        echo "${envFile}"
+                        // def map = [:], lines = envFile.split("\r?\n"); 
+                        // for (def line : lines) {
+                        //     def arr = line.split("=");
+                        //     map.put(arr[0], arr[1]);
+                        // }
+                        // envProps = map;
+                    }
+                }
+                    def testResult = sh(script: 'make test', returnStatus: true)
+
+                    // การจัดการผลลัพธ์การทดสอบ
+                    if (testResult == 0) {
+                        echo 'Tests passed!'
+                    } else {
+                        error 'Tests failed!'
+                    }
+                }
             }
         }
     }
