@@ -15,7 +15,6 @@ pipeline {
             steps {
 
                 echo 'test build docker'
-                sh 'sudo docker build -t test_api_p5000:1.0 .'
                 script {
                     echo 'Building the application...'
                     // การสร้างแอปพลิเคชัน
