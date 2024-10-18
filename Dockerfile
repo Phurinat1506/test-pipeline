@@ -1,5 +1,5 @@
 FROM python:3.9-slim
-WORKDIR /test_api
+WORKDIR /test_pipeline
 COPY test_api_p5000.py /test_pipeline/
 COPY requirements.txt /test_pipeline/
 COPY . /test_pipeline/
