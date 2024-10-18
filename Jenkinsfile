@@ -11,25 +11,25 @@ pipeline {
             }
         }
 
-        stage('build') {
-            steps {
+        // stage('build') {
+        //     steps {
 
-                echo 'test build docker'
-                script {
-                    echo 'Building the application...'
-                    // การสร้างแอปพลิเคชัน
-                    def buildResult = sh(script: 'sudo docker build -t test_api_p5000:1.0 .', returnStatus: true)
-                    echo "Build result status: ${buildResult}"
-                    // ตรวจสอบผลลัพธ์การสร้าง
-                    if (buildResult == 0) {
-                        echo 'Build successfully!'
-                    }else {
-                        error 'Build failed!'
-                    }
-                }
+        //         echo 'test build docker'
+        //         script {
+        //             echo 'Building the application...'
+        //             // การสร้างแอปพลิเคชัน
+        //             def buildResult = sh(script: 'sudo docker build -t test_api_p5000:1.0 .', returnStatus: true)
+        //             echo "Build result status: ${buildResult}"
+        //             // ตรวจสอบผลลัพธ์การสร้าง
+        //             if (buildResult == 0) {
+        //                 echo 'Build successfully!'
+        //             }else {
+        //                 error 'Build failed!'
+        //             }
+        //         }
                 
-            }
-        }
+        //     }
+        // }
         stage('Test') {
             steps {
                 script {
