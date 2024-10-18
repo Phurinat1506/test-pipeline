@@ -7,7 +7,7 @@ pipeline {
                 echo 'Check version python'
                 sh 'python3 -V'
                 echo 'test build docker'
-                sh 'docker build -t test_api_p5000:1.0 .'
+                sh 'sudo docker build -t test_api_p5000:1.0 .'
                 
             }
         }
