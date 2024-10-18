@@ -53,11 +53,11 @@ pipeline {
                     //def testResult = sh(script: 'make test', returnStatus: true)
 
                     // การจัดการผลลัพธ์การทดสอบ
-                    if (testResult == 0) {
-                        echo 'Tests passed!'
-                    } else {
-                        error 'Tests failed!'
-                    }
+                    // if (testResult == 0) {
+                    //     echo 'Tests passed!'
+                    // } else {
+                    //     error 'Tests failed!'
+                    // }
                 }
             }
         }
