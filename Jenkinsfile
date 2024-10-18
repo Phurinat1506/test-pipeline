@@ -41,13 +41,14 @@ pipeline {
                         // อ่านไฟล์ .env
                         def envFile = readFile '.env'
 
-                        echo "${envFile}"
-                        // def map = [:], lines = envFile.split("\r?\n"); 
-                        // for (def line : lines) {
-                        //     def arr = line.split("=");
-                        //     map.put(arr[0], arr[1]);
-                        // }
-                        // envProps = map;
+                        // echo "${envFile}"
+                        def map = [:], lines = envFile.split("\r?\n"); 
+                        for (def line : lines) {
+                            def arr = line.split("=");
+                            map.put(arr[0], arr[1]);
+                            echo "${map}"
+                        }
+                        envProps = map;
                     }
                 
                     //def testResult = sh(script: 'make test', returnStatus: true)
